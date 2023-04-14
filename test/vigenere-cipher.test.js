@@ -82,11 +82,11 @@ describe('Vigenere cipher', () => {
 
     it.optional('double-sided reverse cryptography 2', () => {
       for (let i = 2; i < 200; i += 1) {
-        const testStr = createTestString(i);
-        const reversedTestStr = testStr.split('').reverse().join('');
-        const testKey = createTestKey(i - i % 2);
-        const encrypted = reverseMachine.encrypt(reversedTestStr, testKey);
-        const reversedEncrypted = encrypted.split('').reverse().join('');
+        const testStr = createTestString(i); // тестовая строка
+        const reversedTestStr = testStr.split('').reverse().join(''); // переворачиваем
+        const testKey = createTestKey(i - i % 2); // test key 
+        const encrypted = reverseMachine.encrypt(reversedTestStr, testKey); // encrypt reversedTestStr
+        const reversedEncrypted = encrypted.split('').reverse().join(''); // revers encrypted
         assert.equal(reverseMachine.decrypt(reversedEncrypted, testKey), testStr);
       }
     });
